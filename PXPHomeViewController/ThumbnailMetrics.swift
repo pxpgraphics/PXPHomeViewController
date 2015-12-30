@@ -46,5 +46,5 @@ struct ThumbnailCellMetrics {
 			return HomeMetrics.lineSpacing()
 		}
 	}
-	
+
 }

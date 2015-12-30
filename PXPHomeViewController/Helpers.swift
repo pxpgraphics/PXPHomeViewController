@@ -24,11 +24,31 @@ extension UIColor {
 
 extension UIDevice {
 	class func isIpad() -> Bool {
-		return UIDevice.currentDevice().userInterfaceIdiom == .Pad
+		return currentDevice().userInterfaceIdiom == .Pad
 	}
 
 	class func isIphone() -> Bool {
-		return UIDevice.currentDevice().userInterfaceIdiom == .Phone
+		return currentDevice().userInterfaceIdiom == .Phone
+	}
+}
+
+// MARK: UILabel
+
+extension UILabel {
+	func sizeThatFitsText() -> CGSize {
+		guard let labelText = text else { printFunction("Label text is nil!"); return CGSize() }
+		guard let text: NSString = labelText as NSString else { printFunction("Label text couldn't be converted to NSString!"); return CGSize() }
+		let attributes = [NSFontAttributeName:font]
+		let textSize = text.sizeWithAttributes(attributes)
+		return CGSize(width: ceil(textSize.width), height: ceil(textSize.height)) // Integral sizes
+	}
+
+	func widthThatFitsText() -> CGFloat {
+		return sizeThatFitsText().width
+	}
+
+	func heightThatFitsText() -> CGFloat {
+		return sizeThatFitsText().height
 	}
 }
 
