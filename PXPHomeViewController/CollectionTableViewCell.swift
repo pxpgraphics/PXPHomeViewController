@@ -18,6 +18,7 @@ class CollectionTableViewCell: UITableViewCell {
 
 		collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: flowLayout)
 		collectionView.backgroundColor = UIColor.whiteColor()
+		collectionView.scrollsToTop = false
 
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 
