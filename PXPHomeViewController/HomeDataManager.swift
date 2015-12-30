@@ -13,6 +13,7 @@ class HomeDataManager: NSObject, UITableViewDataSource, UITableViewDelegate, UIC
 	let numberOfItemsPerRow = 25
 	let tableViewCellIdentifier = "HomeTableViewCellIdentifier"
 	let collectionViewCellIdentifier = "HomeCollectionViewCellIdentifier"
+	let thumbnailCellMetrics = ThumbnailCellMetrics.HomeMetrics()
 	var data = [[UIColor]]()
 	weak var tableView: UITableView?
 	var cachedOffsets = [Int:CGFloat]() // Used to store collection view horizontal offsets.
@@ -33,7 +34,7 @@ class HomeDataManager: NSObject, UITableViewDataSource, UITableViewDelegate, UIC
 		tableView.registerClass(CollectionTableViewCell.self, forCellReuseIdentifier: tableViewCellIdentifier)
 		tableView.dataSource = self
 		tableView.delegate = self
-		tableView.rowHeight = ThumbnailCellSize.home.rowHeight()
+		tableView.rowHeight = thumbnailCellMetrics.rowHeight()
 		tableView.separatorStyle = .None
 		tableView.reloadData()
 		self.tableView = tableView
@@ -87,15 +88,15 @@ class HomeDataManager: NSObject, UITableViewDataSource, UITableViewDelegate, UIC
 	// MARK: UICollectionViewDelegateFlowLayout
 
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-		return ThumbnailCellSize.home.sectionInsets() // Only changes horizontal insets
+		return thumbnailCellMetrics.sectionInsets() // Only changes horizontal insets
 	}
 
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-		return ThumbnailCellSize.home.lineSpacing()
+		return thumbnailCellMetrics.lineSpacing()
 	}
 
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-		return ThumbnailCellSize.home.cellSize() // 4:3 ratio
+		return thumbnailCellMetrics.cellSize() // 4:3 ratio
 	}
 
 }
