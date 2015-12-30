@@ -20,6 +20,18 @@ extension UIColor {
 	}
 }
 
+// MARK: UIDevice
+
+extension UIDevice {
+	class func isIpad() -> Bool {
+		return UIDevice.currentDevice().userInterfaceIdiom == .Pad
+	}
+
+	class func isIphone() -> Bool {
+		return UIDevice.currentDevice().userInterfaceIdiom == .Phone
+	}
+}
+
 // MARK: Pretty Print
 
 /**

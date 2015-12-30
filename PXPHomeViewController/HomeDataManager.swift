@@ -33,7 +33,7 @@ class HomeDataManager: NSObject, UITableViewDataSource, UITableViewDelegate, UIC
 		tableView.registerClass(CollectionTableViewCell.self, forCellReuseIdentifier: tableViewCellIdentifier)
 		tableView.dataSource = self
 		tableView.delegate = self
-		tableView.rowHeight = 180
+		tableView.rowHeight = ThumbnailCellSize.home.rowHeight()
 		tableView.separatorStyle = .None
 		tableView.reloadData()
 		self.tableView = tableView
@@ -48,7 +48,7 @@ class HomeDataManager: NSObject, UITableViewDataSource, UITableViewDelegate, UIC
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier, forIndexPath: indexPath)
 		guard let tableViewCell = cell as? CollectionTableViewCell else { printFunction("Unknown cell: \(cell) found at indexPath: \(indexPath)"); return cell }
-		tableViewCell.collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: collectionViewCellIdentifier)
+		tableViewCell.collectionView.registerClass(ThumbnailCell.self, forCellWithReuseIdentifier: collectionViewCellIdentifier)
 		tableViewCell.selectionStyle = .None
 		return tableViewCell
 	}
@@ -87,11 +87,15 @@ class HomeDataManager: NSObject, UITableViewDataSource, UITableViewDelegate, UIC
 	// MARK: UICollectionViewDelegateFlowLayout
 
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-		return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20) // Only changes horizontal insets
+		return ThumbnailCellSize.home.sectionInsets() // Only changes horizontal insets
+	}
+
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+		return ThumbnailCellSize.home.lineSpacing()
 	}
 
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-		return CGSize(width: 120, height: 160) // 4:3 ratio
+		return ThumbnailCellSize.home.cellSize() // 4:3 ratio
 	}
 
 }

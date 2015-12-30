@@ -16,6 +16,7 @@
 		AD8B0BCE1C3329BE003DF2F0 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B0BCD1C3329BE003DF2F0 /* Helpers.swift */; };
 		AD8B0BD01C332A9B003DF2F0 /* HomeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B0BCF1C332A9B003DF2F0 /* HomeDataManager.swift */; };
 		AD8B0BD41C33369D003DF2F0 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B0BD31C33369D003DF2F0 /* CollectionTableViewCell.swift */; };
+		AD8B0BDA1C33501F003DF2F0 /* ThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B0BD91C33501F003DF2F0 /* ThumbnailCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		AD8B0BCD1C3329BE003DF2F0 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		AD8B0BCF1C332A9B003DF2F0 /* HomeDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDataManager.swift; sourceTree = "<group>"; };
 		AD8B0BD31C33369D003DF2F0 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
+		AD8B0BD91C33501F003DF2F0 /* ThumbnailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				AD8B0BD31C33369D003DF2F0 /* CollectionTableViewCell.swift */,
+				AD8B0BD91C33501F003DF2F0 /* ThumbnailCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD8B0BDA1C33501F003DF2F0 /* ThumbnailCell.swift in Sources */,
 				AD8B0BD41C33369D003DF2F0 /* CollectionTableViewCell.swift in Sources */,
 				AD8B0B9E1C332647003DF2F0 /* AppDelegate.swift in Sources */,
 				AD8B0BCE1C3329BE003DF2F0 /* Helpers.swift in Sources */,
