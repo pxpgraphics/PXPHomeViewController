@@ -48,7 +48,7 @@ class HomeDataManager: NSObject, UITableViewDataSource, UITableViewDelegate, UIC
 
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier, forIndexPath: indexPath)
-		guard let tableViewCell = cell as? CollectionTableViewCell else { printFunction("Unknown cell: \(cell) found at indexPath: \(indexPath)"); return cell }
+		guard let tableViewCell = cell as? CollectionTableViewCell else { printFunction("Unknown cell: \(cell) found at index path: \(indexPath)"); return cell }
 		tableViewCell.collectionView.registerClass(ThumbnailCell.self, forCellWithReuseIdentifier: collectionViewCellIdentifier)
 		tableViewCell.selectionStyle = .None
 		return tableViewCell
@@ -57,13 +57,13 @@ class HomeDataManager: NSObject, UITableViewDataSource, UITableViewDelegate, UIC
 	// MARK: UITableViewDelegate
 
 	func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-		guard let tableViewCell = cell as? CollectionTableViewCell else { printFunction("Unknown cell: \(cell) found at indexPath: \(indexPath)"); return }
+		guard let tableViewCell = cell as? CollectionTableViewCell else { printFunction("Unknown cell: \(cell) found at index path: \(indexPath)"); return }
 		tableViewCell.setCollectionViewDataManager(self, forRow: indexPath.row)
 		tableViewCell.collectionOffset = cachedOffsets[indexPath.row] ?? 0
 	}
 
 	func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-		guard let tableViewCell = cell as? CollectionTableViewCell else { printFunction("Unknown cell: \(cell) found at indexPath: \(indexPath)"); return }
+		guard let tableViewCell = cell as? CollectionTableViewCell else { printFunction("Unknown cell: \(cell) found at index path: \(indexPath)"); return }
 		cachedOffsets[indexPath.row] = tableViewCell.collectionOffset
 	}
 
@@ -88,15 +88,15 @@ class HomeDataManager: NSObject, UITableViewDataSource, UITableViewDelegate, UIC
 	// MARK: UICollectionViewDelegateFlowLayout
 
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-		return thumbnailCellMetrics.sectionInsets() // Only changes horizontal insets
+		return thumbnailCellMetrics.sectionInsets() // Only changes horizontal insets out side of the collection view
 	}
 
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-		return thumbnailCellMetrics.lineSpacing()
+		return thumbnailCellMetrics.lineSpacing() // Only changes horizontal spacing between collection view items
 	}
 
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-		return thumbnailCellMetrics.cellSize() // 4:3 ratio
+		return thumbnailCellMetrics.cellSize() // 4:3 aspect ratio
 	}
 
 }
