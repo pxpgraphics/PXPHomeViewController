@@ -35,6 +35,8 @@ class CollectionTableViewCell: UITableViewCell {
 }
 
 extension CollectionTableViewCell {
+	typealias CollectionViewDataManager = protocol<UICollectionViewDataSource, UICollectionViewDelegate>
+
 	var collectionOffset: CGFloat {
 		set {
 			collectionView.contentOffset.x = newValue
@@ -45,7 +47,7 @@ extension CollectionTableViewCell {
 		}
 	}
 
-	func setCollectionViewDataManager<D: protocol<UICollectionViewDataSource, UICollectionViewDelegate>>(dataManager: D, forRow row: Int) {
+	func setCollectionViewDataManager<T: CollectionViewDataManager>(dataManager: T, forRow row: Int) {
 		collectionView.dataSource = dataManager
 		collectionView.delegate = dataManager
 		collectionView.tag = row
